@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import {
+  Nav,
+  NavButton,
+  NavIcon,
+  Phone,
+  NavText,
+  Content,
+  Burger,
+  Layout,
+  Greeting,
+  Name,
+  Hi,
+  Image,
+} from './styles';
+
+import image from './photo.jpeg';
 
 function App() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Phone>
+        <Nav>
+          <NavButton>
+            <NavIcon className="uil uil-home" />
+            <NavText>Home</NavText>
+          </NavButton>
+          <NavButton>
+            <NavIcon className="uil uil-cloud-download" />
+            <NavText>About</NavText>
+          </NavButton>
+          <NavButton>
+            <NavIcon className="uil uil-calendar-alt" />
+            <NavText>Docs</NavText>
+          </NavButton>
+          <NavButton>
+            <NavIcon className="uil uil-signout" />
+            <NavText>Logout</NavText>
+          </NavButton>
+        </Nav>
+        <Content open={open}>
+          <Burger onClick={() => setOpen(!open)} className="uil uil-bars" />
+          <Greeting>
+            <Hi>Hello, </Hi>
+            <Name>Mr. Fabián</Name>
+            <Image src={image} alt=""/>
+          </Greeting>
+        </Content>
+      </Phone>
+    </Layout>
   );
 }
 
